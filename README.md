@@ -1,4 +1,4 @@
-# Test app for my CV #
+# PckgChecker #
 ## Listing Perl modules added/removed to/from the system ##
 ----
 __Languages used:__
