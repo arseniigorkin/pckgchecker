@@ -26,6 +26,7 @@ The webpage uses AJAX method to fetch updated list of the Perl modules from the 
 
 ###The Docker###
 ![picture alt](https://github.com/arseniigorkin/pckgchecker/blob/master/docker.png?raw=true "Dockerfile")
+
 The software is deitributed with the dockerfile. This meand that you can run the software in the container (aka VM but with lower system requirements and size than a usual VMs).
 
 __There are below instructions of how to run:__
