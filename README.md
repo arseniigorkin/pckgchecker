@@ -37,4 +37,4 @@ __There are below instructions of how to run:__
 ----
 
 __Author__: _Arsenii Gorkin_
-![picture alt](http://www.brightlightpictures.com/assets/images/portfolio/thethaw_header.jpg "Title is optional")
+![picture alt](https://github.com/arseniigorkin/pckgchecker/blob/master/perl.png?raw=true "Perl demo program")
