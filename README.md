@@ -33,3 +33,4 @@ First we need to download (on fly) and build the image
 * create a directory for the software `$ mkdir ~/myapp`
 * navigate there `$ cd ~/myapp`
 * using `git` download the repository to your local machine: `$ git clone git://github.com/arseniigorkin/pckgchecker.git`
+* run Docker to build the image (it will be downloaded at the same time): `$ sudo docker `
