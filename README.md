@@ -12,6 +12,10 @@ __Frameworks used:__
 * Bootstrap 3
 * jQuery
 
+__What I have done__
+* Built a dockerfile that builds Ubuntu (last ver.) with fully configured Apache2 on board. To start a new container you just need to call an image (without any parameters and arguments, like: perl myapp.pl etc..). This is a very comfort build that gives me all the power of Apache2 server. Using this biuld you feel like if you work on the full machine with a full server.
+* developed a software itself.
+
 ----
 ###Principles###
 __On the server-side__
@@ -38,6 +42,8 @@ __There are below instructions of how to run:__
 
 
 ----
+###NB###
+As I have never worked with any containers like Docker, this is my first try (dockerfile). I spent 2 days for understanding the idea and preparing the dockerfile that I supply in this repository.
 
 __Author__: _Arsenii Gorkin_
 ![picture alt](https://github.com/arseniigorkin/pckgchecker/blob/master/perl.png?raw=true "Perl demo program")
