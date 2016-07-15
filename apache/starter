@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+# Description: Making our container working infinitely.
+# Arsenii Gorkin <gorkin@protonmail.com>
+
+/etc/init.d/apache2 start FOREGROUND
+
+#trap for preventing a container to be terminated immediately
+sleep infinity
