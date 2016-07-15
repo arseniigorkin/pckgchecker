@@ -30,5 +30,6 @@ The software is deitributed with the dockerfile. This meand that you can run the
 __There are below instructions of how to run:__
 
 First we need to download (on fly) and build the image
-* create a directory for the software `$ sudo mkdir ~/myapp`
+* create a directory for the software `$ mkdir ~/myapp`
 * navigate there `$ cd ~/myapp`
+* using `git` download the repository to your local machine: `$ git clone git://github.com/arseniigorkin/pckgchecker.git`
