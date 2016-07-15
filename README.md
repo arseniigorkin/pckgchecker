@@ -32,3 +32,9 @@ __There are below instructions of how to run:__
 1. First we need to build (and download on fly) the image: `$ sudo docker build -t ag/pckgchecker https://github.com/arseniigorkin/pckgchecker.git`. You can replace `ag/pckgchecker` with any name you like for this image.
 2. Run new container: `$ sudo docker run -d -p 9191:80 ag/pckgchecker`. You can change the port `9191` to any you like for outuping the program to your localhost. 
 3. Open browser and type: `http://localhost:9191`.
+
+
+----
+
+__Author__: _Arsenii Gorkin_
+![picture alt](http://www.brightlightpictures.com/assets/images/portfolio/thethaw_header.jpg "Title is optional")
