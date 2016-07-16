@@ -56,8 +56,12 @@ RUN ["chmod", "0755", "/starter"]
 RUN apt-get clean
 
 #Deploying the software
-COPY ./app/test.pl /var/www/cgi-bin
+ADD ./app/test.pl /var/www/cgi-bin/test.pl
 RUN ["chmod", "0755", "/var/www/cgi-bin/test.pl"]
+
+ADD ./app/html/index.html /var/www/html/index.html
+ADD ./app/html/module.png /var/www/html/module.png
+ADD ./app/html/pm.png /var/www/html/pm.png
 
 #Starting Apache2
 EXPOSE 80
