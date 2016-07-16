@@ -3,7 +3,7 @@
 # Description: Making our container working infinitely.
 # Arsenii Gorkin <gorkin@protonmail.com>
 
-/etc/init.d/apache2 start FOREGROUND
+/etc/init.d/apache2 start
 
-#trap for preventing a container to be terminated immediately
-sleep infinity
+#Starting Bash for managing the system from command line
+bash
