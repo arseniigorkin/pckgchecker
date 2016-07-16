@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>PckgChecker Web-app</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+
+<style>
+body {
+	background: #f2f2f2 !important;
+}
+#container-div {
+    display: flex;
+    width: 100%;
+}
+
+#container-div > div.left {
+    width: 30px;
+    height: 100%;
+    margin-top: 30px;
+    margin-right: 10px;
+}
+#container-div > div.center {
+    width: 100%;
+    height: 100%;
+}
+#container-div > div.right {
+    width: 30px;
+    height: 100%;
+   
+}
+
+.icon {
+    vertical-align: middle;
+    max-height: 25px;
+    max-width: 25px;
+}
+.pre-scrollable {
+	max-height: 60vh;
+	-webkit-border-radius: 12px;
+	-moz-border-radius: 12px;
+	border-radius: 12px;
+	border: 3px solid #b3b3b3;
+	
+}
+
+
+.badge-image {
+	max-height: 50px;
+    max-width: 50px;
+    float: left;
+    padding-right: 10px;
+    padding-top: 20px;
+}
+</style>
+
+<script>
+//$(document).ready(function(){
+//    $('[data-toggle="popover"]').popover();
+//});
+
+
+//$(document).ready(function(){
+//   $('[data-toggle="popover"]').popover({
+//        placement : 'bottom',
+//		trigger : 'hover',
+//        html : true,
+//        content : '<div class="media"><a href="#" class="pull-left"><img src="module.png" class="media-object" alt="Sample Image"></a><div class="media-body"><h4 class="media-heading">Jhon Carter</h4><p>Excellent Bootstrap popover! I really love it.</p></div></div>'
+//    });
+//});
+
+$(document).ready(function(){
+	$('a[rel=popover]').popover({
+	  html: true,
+	  trigger: 'focus',
+	  placement: 'bottom',
+	  title: function(){return '<span class="glyphicon glyphicon-info-sign"></span> ' + $(this).data('title');},
+	  content: function(){return '<div class="media"><img src="pm.png"class="badge-image" /><div class="media-body"><h4 class="media-heading"><a href="http://search.cpan.org/perldoc?'+$(this).data('name') + '" target="_blank" title="Go to CPAN for more information about the module '+$(this).data('name') + '">'+$(this).data('name') + '</a></h4><b>Version: </b>'+$(this).data('version') + '<br><small>'+$(this).data('description') + '</small></div></div>';}
+	});
+});
+</script>
+
+
+<body>
+
+<div class="container">
+ 	<h2><span class="glyphicon glyphicon-list-alt"></span> Perl modules online list<br>
+ 	<small>Click on any module for information</small></h2>
+ 	
+	<div class="row">
+		
+		<div class="list-group pre-scrollable">
+			<a href="#" class="list-group-item" rel="popover" data-toggle="popover" data-description="This is a basic Perl module" data-title="Module info" data-name="CGI::Carp" data-version="2.0.1">
+				<div id="container-div">
+					<div class="left">
+					
+						<img class="icon" src="module.png"  />
+					</div>
+					<div class="center">
+					<h4>CGI::Carp <span class="label label-success">NEW</span></h4>
+					<br><small>Installed and active Perl module</small>
+					</div>
+					<div class="right">
+						<span class="glyphicon glyphicon-play text-success"></span>
+					</div>
+				</div>
+			</a>
+			
+			<a href="#" class="list-group-item" rel="popover" data-toggle="popover" data-description="This is a basic Perl module" data-title="Module info" data-name="CGI::Carp" data-version="2.0.1">
+				<div id="container-div">
+					<div class="left">
+					
+						<img class="icon" src="module.png"  />
+					</div>
+					<div class="center">
+					<h4>CGI::Carp <span class="label label-success">NEW</span></h4>
+					<br><small>Installed and active Perl module</small>
+					</div>
+					<div class="right">
+						<span class="glyphicon glyphicon-play text-success"></span>
+					</div>
+				</div>
+			</a>
+			
+			<a href="#" class="list-group-item" rel="popover" data-toggle="popover" data-description="This is a basic Perl module" data-title="Module info" data-name="CGI::Carp" data-version="2.0.1">
+				<div id="container-div">
+					<div class="left">
+					
+						<img class="icon" src="module.png"  />
+					</div>
+					<div class="center">
+					<h4>CGI::Carp <span class="label label-success">NEW</span></h4>
+					<br><small>Installed and active Perl module</small>
+					</div>
+					<div class="right">
+						<span class="glyphicon glyphicon-play text-success"></span>
+					</div>
+				</div>
+			</a>
+			
+			<a href="#" class="list-group-item" rel="popover" data-toggle="popover" data-description="This is a basic Perl module" data-title="Module info" data-name="CGI::Carp" data-version="2.0.1">
+				<div id="container-div">
+					<div class="left">
+					
+						<img class="icon" src="module.png"  />
+					</div>
+					<div class="center">
+					<h4>CGI::Carp <span class="label label-success">NEW</span></h4>
+					<br><small>Installed and active Perl module</small>
+					</div>
+					<div class="right">
+						<span class="glyphicon glyphicon-play text-success"></span>
+					</div>
+				</div>
+			</a>
+			
+			<a href="#" class="list-group-item" rel="popover" data-toggle="popover" data-description="This is a basic Perl module" data-title="Module info" data-name="CGI::Carp" data-version="2.0.1">
+				<div id="container-div">
+					<div class="left">
+					
+						<img class="icon" src="module.png"  />
+					</div>
+					<div class="center">
+					<h4>CGI::Carp <span class="label label-success">NEW</span></h4>
+					<br><small>Installed and active Perl module</small>
+					</div>
+					<div class="right">
+						<span class="glyphicon glyphicon-play text-success"></span>
+					</div>
+				</div>
+			</a>
+			
+			<a href="#" class="list-group-item" rel="popover" data-toggle="popover" data-description="This is a basic Perl module" data-title="Module info" data-name="CGI::Carp" data-version="2.0.1">
+				<div id="container-div">
+					<div class="left">
+					
+						<img class="icon" src="module.png"  />
+					</div>
+					<div class="center">
+					<h4>CGI::Carp <span class="label label-success">NEW</span></h4>
+					<br><small>Installed and active Perl module</small>
+					</div>
+					<div class="right">
+						<span class="glyphicon glyphicon-play text-success"></span>
+					</div>
+				</div>
+			</a>
+			
+			<a href="#" class="list-group-item" rel="popover" data-toggle="popover" data-description="This is a basic Perl module" data-title="Module info" data-name="CGI::Carp" data-version="2.0.1">
+				<div id="container-div">
+					<div class="left">
+					
+						<img class="icon" src="module.png"  />
+					</div>
+					<div class="center">
+					<h4>CGI::Carp <span class="label label-success">NEW</span></h4>
+					<br><small>Installed and active Perl module</small>
+					</div>
+					<div class="right">
+						<span class="glyphicon glyphicon-play text-success"></span>
+					</div>
+				</div>
+			</a>
+			
+			<a href="#" class="list-group-item" rel="popover" data-toggle="popover" data-description="This is a basic Perl module" data-title="Module info" data-name="CGI::Carp" data-version="2.0.1">
+				<div id="container-div">
+					<div class="left">
+					
+						<img class="icon" src="module.png"  />
+					</div>
+					<div class="center">
+					<h4>CGI::Carp <span class="label label-success">NEW</span></h4>
+					<br><small>Installed and active Perl module</small>
+					</div>
+					<div class="right">
+						<span class="glyphicon glyphicon-play text-success"></span>
+					</div>
+				</div>
+			</a>
+			
+			<a href="#" class="list-group-item" rel="popover" data-toggle="popover" data-description="This is a basic Perl module" data-title="Module info" data-name="CGI::Carp" data-version="2.0.1">
+				<div id="container-div">
+					<div class="left">
+					
+						<img class="icon" src="module.png"  />
+					</div>
+					<div class="center">
+					<h4>CGI::Carp <span class="label label-success">NEW</span></h4>
+					<br><small>Installed and active Perl module</small>
+					</div>
+					<div class="right">
+						<span class="glyphicon glyphicon-play text-success"></span>
+					</div>
+				</div>
+			</a>
+			
+			<a href="#" class="list-group-item" rel="popover" data-toggle="popover" data-description="This is a basic Perl module" data-title="Module info" data-name="CGI::Carp" data-version="2.0.1">
+				<div id="container-div">
+					<div class="left">
+					
+						<img class="icon" src="module.png"  />
+					</div>
+					<div class="center">
+					<h4>CGI::Carp <span class="label label-success">NEW</span></h4>
+					<br><small>Installed and active Perl module</small>
+					</div>
+					<div class="right">
+						<span class="glyphicon glyphicon-play text-success"></span>
+					</div>
+				</div>
+			</a>
+			
+			<a href="#" class="list-group-item" rel="popover" data-toggle="popover" data-description="This is a basic Perl module" data-title="Module info" data-name="CGI::Carp" data-version="2.0.1">
+				<div id="container-div">
+					<div class="left">
+					
+						<img class="icon" src="module.png"  />
+					</div>
+					<div class="center">
+					<h4>CGI::Carp <span class="label label-success">NEW</span></h4>
+					<br><small>Installed and active Perl module</small>
+					</div>
+					<div class="right">
+						<span class="glyphicon glyphicon-play text-success"></span>
+					</div>
+				</div>
+			</a>
+			
+			<a href="#" class="list-group-item" rel="popover" data-toggle="popover" data-description="This is a basic Perl module" data-title="Module info" data-name="CGI::Carp" data-version="2.0.1">
+				<div id="container-div">
+					<div class="left">
+					
+						<img class="icon" src="module.png"  />
+					</div>
+					<div class="center">
+					<h4>CGI::Carp <span class="label label-success">NEW</span></h4>
+					<br><small>Installed and active Perl module</small>
+					</div>
+					<div class="right">
+						<span class="glyphicon glyphicon-play text-success"></span>
+					</div>
+				</div>
+			</a>
+			
+			<a href="#" class="list-group-item" rel="popover" data-toggle="popover" data-description="This is a basic Perl module" data-title="Module info" data-name="CGI::Carp" data-version="2.0.1">
+				<div id="container-div">
+					<div class="left">
+					
+						<img class="icon" src="module.png"  />
+					</div>
+					<div class="center">
+					<h4>CGI::Carp <span class="label label-success">NEW</span></h4>
+					<br><small>Installed and active Perl module</small>
+					</div>
+					<div class="right">
+						<span class="glyphicon glyphicon-play text-success"></span>
+					</div>
+				</div>
+			</a>
+			
+			<a href="#" class="list-group-item" rel="popover" data-toggle="popover" data-description="This is a basic Perl module" data-title="Module info" data-name="CGI::Carp" data-version="2.0.1">
+				<div id="container-div">
+					<div class="left">
+					
+						<img class="icon" src="module.png"  />
+					</div>
+					<div class="center">
+					<h4>CGI::Carp <span class="label label-success">NEW</span></h4>
+					<br><small>Installed and active Perl module</small>
+					</div>
+					<div class="right">
+						<span class="glyphicon glyphicon-play text-success"></span>
+					</div>
+				</div>
+			</a>
+			
+			<a href="#" class="list-group-item" rel="popover" data-toggle="popover" data-description="This is a basic Perl module" data-title="Module info" data-name="CGI::Carp" data-version="2.0.1">
+				<div id="container-div">
+					<div class="left">
+					
+						<img class="icon" src="module.png"  />
+					</div>
+					<div class="center">
+					<h4>CGI::Carp <span class="label label-success">NEW</span></h4>
+					<br><small>Installed and active Perl module</small>
+					</div>
+					<div class="right">
+						<span class="glyphicon glyphicon-play text-success"></span>
+					</div>
+				</div>
+			</a>
+			
+			<a href="#" class="list-group-item" rel="popover" data-toggle="popover" data-description="This is a basic Perl module" data-title="Module info" data-name="CGI::Carp" data-version="2.0.1">
+				<div id="container-div">
+					<div class="left">
+					
+						<img class="icon" src="module.png"  />
+					</div>
+					<div class="center">
+					<h4>CGI::Carp <span class="label label-success">NEW</span></h4>
+					<br><small>Installed and active Perl module</small>
+					</div>
+					<div class="right">
+						<span class="glyphicon glyphicon-play text-success"></span>
+					</div>
+				</div>
+			</a>
+			
+		</div>
+		
+	</div>
+</div>
+<div class="container">
+	<div class="row">
+		<div class="col-sm-8"></div>
+		<div class="col-sm-4">
+			<div class="form-group">
+				<label for="email">Change update interval:&nbsp;&nbsp;</label>
+					<label class="radio-inline"><input type="radio" name="optradio" checked>1s</label>
+					<label class="radio-inline"><input type="radio" name="optradio">3s</label>
+					<label class="radio-inline"><input type="radio" name="optradio">5s</label> 
+				
+			</div>
+		</div>
+	</div>
+</div>
+<div class="panel panel-default">
+  <div class="panel-footer">Designed and developed by Arsenii Gorkin. <a href="mailto:gorkin@protonmail.com">gorkin@protonmail.com</a>. &copy;2016.</div>
+</div>
+</body>
+</html>
+
