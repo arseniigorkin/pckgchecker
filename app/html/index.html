@@ -4,9 +4,10 @@
   <title>PckgChecker Web-app</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link href="css/bootstrap-glyphicons.css" rel="stylesheet">
+  <script src="JS/jquery.min.js"></script>
+  <script src="JS/bootstrap.min.js"></script>
   <style>
 	body {background: #f2f2f2 !important;}
 	#container-div { display: flex; width: 100%; }
@@ -33,8 +34,7 @@ var llength = 0;
 
 function myAjax() {
 	
-	//var perljson = "../cgi-bin/mods2.cgi";
-	var perljson = "../cgi-bin/pckgchecker.cgi";
+	var perljson = "/cgi-bin/pckgchecker.cgi";
 	var http_request = new XMLHttpRequest();
 	try{
 		
