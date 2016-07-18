@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>PckgChecker Web-app</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <style>
+	body {background: #f2f2f2 !important;}
+	#container-div { display: flex; width: 100%; }
+
+	#container-div > div.left { width: 30px; height: 100%; margin-top: 30px; margin-right: 10px; }
+	#container-div > div.center { width: 100%; height: 100%; }
+	#container-div > div.right { width: 30px; height: 100%; }
+
+	.icon { vertical-align: middle;  max-height: 25px; max-width: 25px;}
+	.measurer {max-height: 60vh; -webkit-border-radius: 12px; -moz-border-radius: 12px;	border-radius: 7px;	//border: 3px solid #b3b3b3; }
+	.popover-scroll { max-height: 20vh !important; padding-right: 8px; }
+	.badge-image { max-height: 50px; max-width: 50px; float: left; padding-right: 10px; padding-top: 20px;}
+	#entrydiv{ position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);}​
+
+</style>
+  
+</head>
+
+<script>
+var lastList = {};
+var output = "";
+var newList = {};
+var llength = 0;
+
+function myAjax() {
+	
+	//var perljson = "../cgi-bin/mods2.cgi";
+	var perljson = "../cgi-bin/pckgchecker.cgi";
+	var http_request = new XMLHttpRequest();
+	try{
+		
+	   // Opera 8.0+, Firefox, Chrome, Safari
+	   http_request = new XMLHttpRequest();
+	   
+	}catch (e){
+		
+	   // Internet Explorer Browsers
+	   try{
+		   
+		  http_request = new ActiveXObject("Msxml2.XMLHTTP");
+			
+	   }catch (e) {
+		
+		  try{
+			  
+			 http_request = new ActiveXObject("Microsoft.XMLHTTP");
+		  }catch (e){
+			  
+			 // Something went wrong
+			 alert("Your browser broke!");
+			 return false;
+		  }
+			
+	   }
+	}
+	
+	http_request.onreadystatechange = function() {
+		
+		if (http_request.readyState == 4 && http_request.status == 200) {
+			
+			var response = JSON.parse(http_request.responseText);
+			doFetch(response);
+		}
+	};
+	
+	http_request.open("GET", perljson, false); //sync
+	http_request.send();
+	
+}
+
+function doFetch(response) {
+	
+	var outputHandlers = [];
+	var tempObject = {};
+	llength = response.length;
+	
+	for (var i = 0; i < llength; i++) {
+		
+		var thisModule = response[i];
+		
+		if (thisModule.module == null) {
+			continue;
+		}
+		
+		newList[thisModule.module] = {
+			version:thisModule.version,
+			time:Date.now(),
+			wiped:0
+		};
+
+		//matching with previous records
+		if (Object.keys(lastList).length < 1) {
+			
+			tempObject[thisModule.module] = getAhref(thisModule.module, thisModule.version, 'r');
+			outputHandlers.push(thisModule.module);
+			newList[thisModule.module].time = Date.now - 30001;
+		}
+		else if (lastList[thisModule.module] != undefined) {
+			
+			if ((Date.now() - lastList[thisModule.module].time) <= 30000) { //if 30 secs passed we do not add NEW label
+				
+				if (lastList[thisModule.module].wiped != 0) {
+					
+					tempObject[thisModule.module] = getAhref(thisModule.module, thisModule.version, 'n');
+					outputHandlers.push(thisModule.module);
+					newList[thisModule.module].wiped = 0;
+					newList[thisModule.module].time = Date.now();
+
+				}
+				else {
+					newList[thisModule.module].time = lastList[thisModule.module].time;
+					tempObject[thisModule.module] = getAhref(thisModule.module, thisModule.version, 'n');
+					outputHandlers.push(thisModule.module);
+					
+				}
+			
+			}
+			else { //output with a regular acitve state answer
+				
+				if (lastList[thisModule.module].wiped != 0) {
+					
+					tempObject[thisModule.module] = getAhref(thisModule.module, thisModule.version, 'n');
+					outputHandlers.push(thisModule.module);
+					newList[thisModule.module].wiped = 0;
+					newList[thisModule.module].time = Date.now();
+				}
+				else {
+					tempObject[thisModule.module] = getAhref(thisModule.module, thisModule.version, 'r');
+					outputHandlers.push(thisModule.module);
+				}
+				
+				//storing time settings
+				newList[thisModule.module].time = lastList[thisModule.module].time;
+				
+			}
+			
+			delete lastList[thisModule.module];
+		}
+		else {
+			//Creating a new record
+			tempObject[thisModule.module] = getAhref(thisModule.module, thisModule.version, 'n');
+			outputHandlers.push(thisModule.module);
+		}
+	}
+		
+	if (Object.keys(lastList).length > 0) {
+		
+		//Wirking on the deleted modules
+		for (var key in lastList) {
+			
+			if (lastList[key].wiped != 0) {
+				if (Date.now() - lastList[key].wiped <= 60000) { //deleted records will exist 60 seconds 
+					newList[key] = lastList[key];
+					tempObject[key] = getAhref(key, newList[key].version, 'w');
+					outputHandlers.push(key);
+				}
+				else {
+					delete lastList[key];
+				}
+			}
+			else {
+				newList[key] = lastList[key];
+				newList[key].wiped = Date.now();
+				delete lastList[key];
+				tempObject[key] = getAhref(key, newList[key].version, 'w');
+				outputHandlers.push(key);
+			}
+			
+		}
+	
+	}
+
+	//sorting the output by modules names
+	outputHandlers.sort(function (a, b) {
+		
+		return a.toLowerCase().localeCompare(b.toLowerCase());
+		
+	});
+	
+	for (var i = 0; i < outputHandlers.length; i++) {
+		
+		output += tempObject[outputHandlers[i]];
+		
+	}
+	
+	lastList = {};
+	lastList = newList;
+	newList = {};
+	
+	if (output[0]) {
+		$("#entrydiv").hide();
+	}
+	//Showing the result
+	$( "#lister" ).html( output );
+	output = "";
+}
+
+function getList() {
+	
+	if ($("#timeout").val() != 0) {
+		return 0;
+	}
+	else {
+		
+		setTimeout(getList, $("#interval:checked").val());
+	}
+	
+	//requesting the data from the Perl program
+	myAjax();
+	
+}
+
+function getAhref(module, version, flag) {
+	
+	var label = "";
+	var marker = "";
+	var fontcol = "";
+	var imagemain = "";
+	var imagepop = "";
+	var statetext = "";
+	
+	if (flag == "n") {
+		label = '<span class="label label-success">NEW</span>';
+		marker = 'glyphicon-play text-success';
+		imagemain = 'module.png';
+		imagepop = 'pm.png';
+		statetext = 'Just installed and fully active Perl module';
+		
+	}
+	else if (flag == "w") {
+		label = '<span class="label label-default">WIPED</span>';
+		fontcol = 'style="color:#999999 !important"';
+		marker = 'glyphicon glyphicon-remove text-danger';
+		imagemain = 'module-wiped.png'
+		imagepop = 'pm-wiped.png';
+		statetext = 'Just deleted from the host Perl module';
+	}
+	else if (flag == "r") {
+		marker = 'glyphicon-play text-success';
+		imagemain = 'module.png';
+		imagepop = 'pm.png';
+		statetext = 'Installed and active Perl module';
+	}
+	var content = "This is a regular Perl module. For more information please visit the page of the module by clicking on its name in this dialog.";
+	return '<a href="#" \
+					class="list-group-item">\
+					<div id="container-div">\
+					<div class="left">\
+					<img class="icon" src="' + imagemain + '"  />\
+					</div>\
+					<div class="center">\
+					<h4 ' + fontcol + '>' + module + ' ' + label +'</h4>\
+					<br><small ' + fontcol + '>' + statetext + '</small>\
+					<br>\
+					<!-- packlist goes here --\>\
+					<button type="button" class="btn btn-info btn-sm" data-toggle="modal" rel="modal" \
+					data-module="'+module+'" \
+					data-version="'+version+'" \
+					data-img="'+imagepop+'" \
+					data-content="'+content+'"\
+					data-target="#information">Information</button>\
+					</div>\
+					<div class="right">\
+					<span class="glyphicon ' + marker + '"></span>\
+					</div>\
+					</div>\
+					</a>';
+}
+
+$(document).ready(function(){
+	
+		$(document).on("click", 'button[rel=modal]', function () {
+			
+			$( "#modcontent" ).html( '<div class="media" align="justify">\
+			<img src="'+ $(this).data('img') +'"class="badge-image" />\
+			\
+			<h4 class="media-heading">\
+			<a href="http://search.cpan.org/perldoc?'+ $(this).data('module')+'"\
+			 target="_blank" title="Go to CPAN for more information about the module ' + $(this).data('module') + '">\
+			 '+ $(this).data('module') + '</a>\
+			 </h4><b>Version: </b>'+ $(this).data('version') + '<br><hr>\
+			 <h4>A list of sub-packages</h4>\
+			 <small>'+ $(this).data('content') + '</small>\
+			 </div>' );
+		
+	});	
+
+	getList();
+
+});
+</script>
+
+	<body>
+		<div id="entrydiv">
+			<img src="loader.gif" /><a href="#" rel="popover"></a>
+		</div>
+		<div class="container">
+			<h2><span class="glyphicon glyphicon-list-alt"></span> Perl modules online list<br>
+			<small>Click on any module for information</small></h2>
+			<div class="row">
+				<div class="list-group pre-scrollable measurer" id="lister">
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			<!-- Modal -->
+			<div class="modal fade" id="information" role="dialog">
+				<div class="modal-dialog">
+					<!-- Modal content-->
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+							<h4 class="modal-title"><span class="glyphicon glyphicon-info-sign"></span> Module profile</h4>
+						</div>
+						<div class="modal-body pre-scrollable" style="height:400px !important" id="modcontent">
+							<!-- here goes content -->
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">Ok</button>
+						</div>
+					</div>  
+				</div>
+			</div>
+		<div class="row">
+			<div class="col-sm-8"></div>
+				<div class="col-sm-4">
+					<div class="form-group">
+						<label for="email">Change update interval:&nbsp;&nbsp;</label>
+						<label class="radio-inline"><input type="radio" id="interval" name="interval" value="5000" checked>5s</label>
+						<label class="radio-inline"><input type="radio" id="interval" name="interval" value="10000">10s</label>
+						<label class="radio-inline"><input type="radio" id="interval" name="interval" value="15000">15s</label>  
+						<input type="hidden" id="timeout" value="0">
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="panel panel-default">
+			<div class="panel-footer">Designed and developed by Arsenii Gorkin. <a href="mailto:gorkin@protonmail.com">gorkin@protonmail.com</a>. &copy;2016.</div>
+		</div>
+	</body>
+</html>
+
+
