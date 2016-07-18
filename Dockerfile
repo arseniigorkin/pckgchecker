@@ -22,7 +22,7 @@ RUN apt-get install -qy -y perl
 RUN apt-get install -y nano
 
 #Installing Perl modules
-RUN ["cpanm", "Term::ReadLine", "ExtUtils::Installed"]
+RUN ["cpanm", "Term::ReadLine", "File::Find::Rule", "Cpanel::JSON::XS"]
 
 #Installing Apache
 RUN apt-get update && apt-get install -y apache2
