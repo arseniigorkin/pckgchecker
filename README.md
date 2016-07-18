@@ -13,7 +13,7 @@ __Frameworks used:__
 * jQuery
 
 __What I have done__
-* Built a dockerfile that builds Ubuntu (last ver.) with fully configured Apache2 on board. To start a new container you just need to call an image (without any parameters and arguments, like: perl myapp.pl etc..). This is a very comfort build that gives me all the power of Apache2 server. Using this biuld you feel like if you work on the full machine with a full server.
+* Built a dockerfile that builds Ubuntu (last ver.) with fully configured Apache2 and cpanminus on board. To start a new container you just need to call an image (without any parameters and arguments, like: perl myapp.pl etc..). This is a very comfort build that gives me all the power of Apache2 server. Using this biuld you feel like if you work on the full machine with a full server.
 * developed a software itself.
 
 ----
