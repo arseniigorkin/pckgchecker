@@ -56,8 +56,8 @@ RUN ["chmod", "0755", "/starter"]
 RUN apt-get clean
 
 #Deploying the software
-ADD ./app/cgi-bin/pckgchecker.pl /var/www/cgi-bin/pckgchecker.pl
-RUN ["chmod", "0755", "/var/www/cgi-bin/pckgchecker.pl"]
+ADD ./app/cgi-bin/pckgchecker.cgi /var/www/cgi-bin/pckgchecker.cgi
+RUN ["chmod", "0755", "/var/www/cgi-bin/pckgchecker.cgi"]
 
 ADD ./app/html/index.html /var/www/html/index.html
 ADD ./app/html/module.png /var/www/html/module.png
