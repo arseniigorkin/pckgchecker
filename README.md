@@ -37,11 +37,22 @@ __There are below instructions of how to run:__
 
 1. First we need to build (and download on fly) the image: `$ sudo docker build -t ag/pckgchecker https://github.com/arseniigorkin/pckgchecker.git`. You can replace `ag/pckgchecker` with any name you like for this image.
 2. Run new container: `$ sudo docker run -it --rm -p 9191:80 ag/pckgchecker`. You can change the port `9191` to any you like for outuping the program to your localhost. 
-3. Open a browser and type: `http://localhost:9191`.
+3. Open a browser and type: `http://localhost:9191` (please, note: the server is NOT configured for SSL now).
 4. Once you finished working with the app you need to terminate the container. Just type in the terminal (with running container) `CTRL+C`.
 
 
 ----
+
+__Interface__
+Once you open a page `http://localhost:9191` you may see loading image (until the list will come to the browser in full).
+When the page is loaded you see a list of installed modules. and a settings (in the right bottom corner right under the list) for update interval (3 optwions: 5, 10 and 15 secs).
+Installed modules are shown with color icon (in the left of the row) and a green "play" icon on the right.
+Just added modules will have a label "NEW" next to their names and it will last for 30 seconds from the time of installation.
+Just deleted modules will be shown in greyscale colours (b/w icon on the left) and with red cross on the right.
+Deleted modules will appear in the list for the next minute.
+If you click on "Information" you will see a DEMO of how the information. It has a link to the module's page in the CPAN website and a version number.
+Also: if the module is active its icon in this dialogue will be colour, if delete - greyscale.
+
 ###NB###
 As I have never worked with any containers like Docker, this is my first try (dockerfile). I spent 2 days for understanding the idea and preparing the dockerfile that I supply in this repository.
 
