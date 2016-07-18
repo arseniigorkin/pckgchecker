@@ -103,7 +103,7 @@ function doFetch(response) {
 		//matching with previous records
 		if (Object.keys(lastList).length < 1) {
 			
-			tempObject[thisModule.module] = getAhref(thisModule.module, thisModule.version, 'r');
+			tempObject[thisModule.module] = getAhref(thisModule.module, thisModule.version, thisModule.path, 'r');
 			outputHandlers.push(thisModule.module);
 			newList[thisModule.module].time = Date.now - 30001;
 		}
