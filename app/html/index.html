@@ -91,6 +91,7 @@ function doFetch(response) {
 			continue;
 		}
 		
+		thisModule.version = thisModule.version != null ? thisModule.version : Unknown;
 		newList[thisModule.module] = {
 			version:thisModule.version,
 			time:Date.now(),
