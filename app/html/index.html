@@ -91,10 +91,10 @@ function doFetch(response) {
 			continue;
 		}
 		
-		thisModule.version = thisModule.version != null ? thisModule.version : "Unknown";
+		//thisModule.version = thisModule.version != null ? thisModule.version : "Unknown";
 		
 		newList[thisModule.module] = {
-			version:thisModule.version,
+			version:thisModule.version || "Unknown",
 			path:thisModule.path,
 			time:Date.now(),
 			wiped:0
