@@ -28,11 +28,17 @@ This program has two parts:
 which is an .html file (with JS scripts),that receives and parses lists of modules,supplied in JSON format by the backend this Perl script,
 
 * __"Backend"__
-Perl script (actual), that fetches a list of all the installed modules, using @INC, and converts it into JSON format. Then the result is sent to the frontend 
+Perl script (actual), that fetches a list of all the installed modules every 5, 10 or 15 seconds (depending on the user's settings), using `@INC`, and converts it into JSON format. Then the result is sent to the frontend 
 
-__On the client-side__
+__Methods__
 
-The webpage uses AJAX method to fetch updated list of the Perl modules from the server-side and, adding some markup, shows it to a user. The webpage re-checks the data every second, but it can be modified at any time, using special settings-box in the page.
+The Perl script uses two modules for implementing the task:
+
+* __"File::Find::Rule"__
+This is a very handy module for searching files on the machine. It provides a very easy API for creating search queries "on fly" and it can work with `@INC`,
+
+* __Cpanel::JSON::XS"__
+This one gives me a really easy method for converting my data into JSON format.
 
 ----
 
