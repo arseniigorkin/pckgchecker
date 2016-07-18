@@ -113,7 +113,7 @@ function doFetch(response) {
 				
 				if (lastList[thisModule.module].wiped != 0) {
 					
-					tempObject[thisModule.module] = getAhref(thisModule.module, thisModule.version, 'n');
+					tempObject[thisModule.module] = getAhref(thisModule.module, thisModule.version, thisModule.path, 'n');
 					outputHandlers.push(thisModule.module);
 					newList[thisModule.module].wiped = 0;
 					newList[thisModule.module].time = Date.now();
@@ -121,7 +121,7 @@ function doFetch(response) {
 				}
 				else {
 					newList[thisModule.module].time = lastList[thisModule.module].time;
-					tempObject[thisModule.module] = getAhref(thisModule.module, thisModule.version, 'n');
+					tempObject[thisModule.module] = getAhref(thisModule.module, thisModule.version, thisModule.path, 'n');
 					outputHandlers.push(thisModule.module);
 					
 				}
@@ -131,13 +131,13 @@ function doFetch(response) {
 				
 				if (lastList[thisModule.module].wiped != 0) {
 					
-					tempObject[thisModule.module] = getAhref(thisModule.module, thisModule.version, 'n');
+					tempObject[thisModule.module] = getAhref(thisModule.module, thisModule.version, thisModule.path, 'n');
 					outputHandlers.push(thisModule.module);
 					newList[thisModule.module].wiped = 0;
 					newList[thisModule.module].time = Date.now();
 				}
 				else {
-					tempObject[thisModule.module] = getAhref(thisModule.module, thisModule.version, 'r');
+					tempObject[thisModule.module] = getAhref(thisModule.module, thisModule.version, thisModule.path, 'r');
 					outputHandlers.push(thisModule.module);
 				}
 				
@@ -150,7 +150,7 @@ function doFetch(response) {
 		}
 		else {
 			//Creating a new record
-			tempObject[thisModule.module] = getAhref(thisModule.module, thisModule.version, 'n');
+			tempObject[thisModule.module] = getAhref(thisModule.module, thisModule.version, thisModule.path, 'n');
 			outputHandlers.push(thisModule.module);
 		}
 	}
@@ -163,7 +163,7 @@ function doFetch(response) {
 			if (lastList[key].wiped != 0) {
 				if (Date.now() - lastList[key].wiped <= 60000) { //deleted records will exist 60 seconds 
 					newList[key] = lastList[key];
-					tempObject[key] = getAhref(key, newList[key].version, 'w');
+					tempObject[key] = getAhref(key, newList[key].version, thisModule.path, 'w');
 					outputHandlers.push(key);
 				}
 				else {
@@ -174,7 +174,7 @@ function doFetch(response) {
 				newList[key] = lastList[key];
 				newList[key].wiped = Date.now();
 				delete lastList[key];
-				tempObject[key] = getAhref(key, newList[key].version, 'w');
+				tempObject[key] = getAhref(key, newList[key].version, thisModule.path, 'w');
 				outputHandlers.push(key);
 			}
 			
@@ -222,7 +222,7 @@ function getList() {
 	
 }
 
-function getAhref(module, version, flag) {
+function getAhref(module, version, path, flag) {
 	
 	var label = "";
 	var marker = "";
@@ -270,6 +270,7 @@ function getAhref(module, version, flag) {
 					data-version="'+version+'" \
 					data-img="'+imagepop+'" \
 					data-content="'+content+'"\
+					data-path="' + path + '"\
 					data-target="#information">Information</button>\
 					</div>\
 					<div class="right">\
@@ -293,6 +294,10 @@ $(document).ready(function(){
 			 </h4><b>Version: </b>'+ $(this).data('version') + '<br><hr>\
 			 <h4>Additional details</h4>\
 			 <small>'+ $(this).data('content') + '</small>\
+			 <h5>Path to the module<\h5>\
+			 <ul><li>\
+			 '+ $(this).data('path') + '\
+			 </li></ul>\
 			 </div>' );
 		
 	});	
