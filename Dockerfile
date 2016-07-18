@@ -63,7 +63,7 @@ ADD ./app/html/index.html /var/www/html/index.html
 ADD ./app/html/module.png /var/www/html/module.png
 ADD ./app/html/pm.png /var/www/html/pm.png
 ADD ./app/html/module-wiped.png /var/www/html/module-wiped.png
-ADD ./app/html/pm.png-wiped /var/www/html/pm-wiped.png
+ADD ./app/html/pm-wiped.png /var/www/html/pm-wiped.png
 ADD ./app/html/loader.gif /var/www/html/loader.gif
 ADD ./app/html/css/bootstrap.min.css /var/www/html/css/bootstrap.min.css
 ADD ./app/html/css/bootstrap-glyphicons.css /var/www/html/css/bootstrap-glyphicons.css
