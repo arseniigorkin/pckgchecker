@@ -163,7 +163,7 @@ function doFetch(response) {
 			if (lastList[key].wiped != 0) {
 				if (Date.now() - lastList[key].wiped <= 60000) { //deleted records will exist 60 seconds 
 					newList[key] = lastList[key];
-					tempObject[key] = getAhref(key, newList[key].version, thisModule.path, 'w');
+					tempObject[key] = getAhref(key, newList[key].version, newList[key].path, 'w');
 					outputHandlers.push(key);
 				}
 				else {
@@ -174,7 +174,7 @@ function doFetch(response) {
 				newList[key] = lastList[key];
 				newList[key].wiped = Date.now();
 				delete lastList[key];
-				tempObject[key] = getAhref(key, newList[key].version, thisModule.path, 'w');
+				tempObject[key] = getAhref(key, newList[key].version, newList[key].path, 'w');
 				outputHandlers.push(key);
 			}
 			
@@ -269,8 +269,8 @@ function getAhref(module, version, path, flag) {
 					data-module="'+module+'" \
 					data-version="'+version+'" \
 					data-img="'+imagepop+'" \
-					data-content="'+content+'"\
-					data-path="' + path + '"\
+					data-content="'+content+'" \
+					data-path="' + path + '" \
 					data-target="#information">Information</button>\
 					</div>\
 					<div class="right">\
@@ -296,7 +296,7 @@ $(document).ready(function(){
 			 <small>'+ $(this).data('content') + '</small>\
 			 <h5>Path to the module<\h5>\
 			 <ul><li>\
-			 '+ $(this).data('path') + '\
+			 '+ $(this).data('path') +'\
 			 </li></ul>\
 			 </div>' );
 		
