@@ -56,12 +56,18 @@ RUN ["chmod", "0755", "/starter"]
 RUN apt-get clean
 
 #Deploying the software
-ADD ./app/test.pl /var/www/cgi-bin/test.pl
-RUN ["chmod", "0755", "/var/www/cgi-bin/test.pl"]
+ADD ./app/cgi-bin/pckgchecker.pl /var/www/cgi-bin/pckgchecker.pl
+RUN ["chmod", "0755", "/var/www/cgi-bin/pckgchecker.pl"]
 
 ADD ./app/html/index.html /var/www/html/index.html
 ADD ./app/html/module.png /var/www/html/module.png
 ADD ./app/html/pm.png /var/www/html/pm.png
+ADD ./app/html/module.png /var/www/html/module-wiped.png
+ADD ./app/html/pm.png /var/www/html/pm-wiped.png
+ADD ./app/html/pm.png /var/www/html/loader.gif
+ADD ./app/html/style/bootstrap.min.css /var/www/html/style/bootstrap.min.css
+ADD ./app/html/JS/bootstrap.min.js /var/www/html/JS/bootstrap.min.js
+ADD ./app/html/JS/jquery.min.js /var/www/html/JS/jquery.min.js
 
 #Starting Apache2
 EXPOSE 80
