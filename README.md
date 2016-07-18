@@ -1,27 +1,32 @@
 # PckgChecker #
 ## Listing Perl modules added/removed to/from the system ##
 ----
+__Description__
+This is a web-software that lists all the present in the local host Perl modules, using AJAX. This is an easy-to-use webpage that has only one mission: to show in a real time Perl modules installed in the system.
+
+But this webpage can trace modules even after their deletion. You can see just deleted modules as "deleted" one more minute after they have been wiped.
+
+The application provides the user with a list of all the modules in the alphabetical order. Each module is presented with its name and its version.
+
 __Languages used:__
 * Perl // _as a server-side_
 * JavaScript // _as a client-side_
 * HTML
 * CSS
-* XML // _for transmitting data_
+* JSON // _for transmitting data_
 
 __Frameworks used:__
 * Bootstrap 3
 * jQuery
+* File::Find::Rule
+* Cpanel::JSON::XS
 
 __What I have done__
+* Developed the two-side web-software: server-side is based on Perl script and the client-side is based on JavaScript. 
 * Built a dockerfile that builds Ubuntu (last ver.) with fully configured __Apache2__ and __cpanminus__ on board. To start a new container you just need to call an image (without any parameters and arguments, like: perl myapp.pl etc..). This is a very comfort build that gives me all the power of Apache2 server. Using this biuld you feel like if you work on the full machine with a full server.
-* developed a software itself.
 
 ----
 ###Principles###
-__On the server-side__
-
-This is a simple web application, based on AJAX technology, for showing online a list of all the installed Perl modules on the local host.
-
 This program has two parts:
 
 * __"Frontend"__
