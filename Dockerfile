@@ -72,7 +72,7 @@ ADD ./app/html/JS/jquery.min.js /var/www/html/JS/jquery.min.js
 ADD ./app/html/fonts/glyphicons-halflings-regular.eot /var/www/html/fonts/glyphicons-halflings-regular.eot
 ADD ./app/html/fonts/glyphicons-halflings-regular.woff2 /var/www/html/fonts/glyphicons-halflings-regular.woff2
 ADD ./app/html/fonts/glyphicons-halflings-regular.ttf /var/www/html/fonts/glyphicons-halflings-regular.ttf
-ADD ./app/html/fontsglyphicons-halflings-regular.woff /var/www/html/fonts/glyphicons-halflings-regular.woff
+ADD ./app/html/fonts/glyphicons-halflings-regular.woff /var/www/html/fonts/glyphicons-halflings-regular.woff
 ADD ./app/html/fonts/glyphicons-halflings-regular.svg /var/www/html/fonts/glyphicons-halflings-regular.svg
 
 #Starting Apache2
