@@ -79,7 +79,11 @@ If you click on _"Information"_ button next to each module, you will see a DEMO 
 Also: if the module is active its icon in this dialogue will be colour, if delete - greyscale.
 
 ###NB###
-As I have never worked with any containers like Docker, this is my first try (dockerfile). I spent 2 days for understanding the idea and preparing the dockerfile that I supply in this repository.
+As I have never worked with any containers like Docker (or any else) and never saw them in the action, so this is my first try (dockerfile). I spent 2 days for understanding the idea and preparing the dockerfile that I supply in this repository.
+
+Also I could create the program using a regular "refresh" method for auto reloading the same page, which could be then fully written on Perl. But it would be too easy and not in the modern way)). Thus I created this mutiful Bootstrap page with AJAX for your comfort. I hope you will enjoy it!
+
+Thank you.
 
 __Author__: _Arsenii Gorkin_
 ![picture alt](https://github.com/arseniigorkin/pckgchecker/blob/master/perl.png?raw=true "Perl demo program")
