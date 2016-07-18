@@ -65,9 +65,15 @@ ADD ./app/html/pm.png /var/www/html/pm.png
 ADD ./app/html/module.png /var/www/html/module-wiped.png
 ADD ./app/html/pm.png /var/www/html/pm-wiped.png
 ADD ./app/html/pm.png /var/www/html/loader.gif
-ADD ./app/html/style/bootstrap.min.css /var/www/html/style/bootstrap.min.css
+ADD ./app/html/css/bootstrap.min.css /var/www/html/css/bootstrap.min.css
+ADD ./app/html/css/bootstrap-glyphicons.css /var/www/html/css/bootstrap-glyphicons.css
 ADD ./app/html/JS/bootstrap.min.js /var/www/html/JS/bootstrap.min.js
 ADD ./app/html/JS/jquery.min.js /var/www/html/JS/jquery.min.js
+ADD ./app/html/fonts/glyphicons-halflings-regular.eot /var/www/html/fonts/glyphicons-halflings-regular.eot
+ADD ./app/html/fonts/glyphicons-halflings-regular.woff2 /var/www/html/fonts/glyphicons-halflings-regular.woff2
+ADD ./app/html/fonts/glyphicons-halflings-regular.ttf /var/www/html/fonts/glyphicons-halflings-regular.ttf
+ADD ./app/html/fontsglyphicons-halflings-regular.woff /var/www/html/fonts/glyphicons-halflings-regular.woff
+ADD ./app/html/fonts/glyphicons-halflings-regular.svg /var/www/html/fonts/glyphicons-halflings-regular.svg
 
 #Starting Apache2
 EXPOSE 80
