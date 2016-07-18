@@ -83,7 +83,7 @@ __To install the module__ use your open Terminal (which works with the container
 
 __To uninstall the module__ just type in the Terminal (also where the container with this software is active now) and type: `$ sudo cpanm --uninstall Module::Name`. You will need to confirm the deletion.
 
-__To find just installed/uninstalled__ modules on the screen (in the webpage) just use oldschool `ctrl+f` and type there the name of the module you are looking for.
+__To find just installed/uninstalled__ modules on the screen (in the webpage) just use good old `ctrl+f` and type there the name of the module you are looking for.
 
 ###NB###
 As I have never worked with any containers like Docker (or any else) and never saw them in the action, so this is my first try (dockerfile). I spent 2 days for understanding the idea and preparing the dockerfile that I supply in this repository.
