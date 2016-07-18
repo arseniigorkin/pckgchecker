@@ -20,7 +20,15 @@ __What I have done__
 ###Principles###
 __On the server-side__
 
-The application uses the Perl module "bla:bla" that gives us an easy way to list all the Perl modules currently availbale on the local machine.
+This is a simple web application, based on AJAX technology, for showing online a list of all the installed Perl modules on the local host.
+
+This program has two parts:
+
+* __"Frontend"__
+which is an .html file (with JS scripts),that receives and parses lists of modules,supplied in JSON format by the backend this Perl script,
+
+* __"Backend"__
+Perl script (actual), that fetches a list of all the installed modules, using @INC, and converts it into JSON format. Then the result is sent to the frontend 
 
 __On the client-side__
 
@@ -55,7 +63,7 @@ __Just deleted modules__ will be shown in greyscale colours (b/w icon on the lef
 
 Deleted modules will appear in the list for the next minute.
 
-If you click on _"Information"_ you will see a DEMO of how the information. It has a link to the module's page in the CPAN website and a version number.
+If you click on _"Information"_ button next to each module, you will see a DEMO information. It has a link to the module's page in the CPAN website and a version number.
 
 Also: if the module is active its icon in this dialogue will be colour, if delete - greyscale.
 
