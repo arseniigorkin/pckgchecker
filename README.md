@@ -43,14 +43,20 @@ __There are below instructions of how to run:__
 
 ----
 
-__Interface__
+###Interface###
 Once you open a page `http://localhost:9191` you may see loading image (until the list will come to the browser in full).
 When the page is loaded you see a list of installed modules. and a settings (in the right bottom corner right under the list) for update interval (3 optwions: 5, 10 and 15 secs).
-Installed modules are shown with color icon (in the left of the row) and a green "play" icon on the right.
-Just added modules will have a label "NEW" next to their names and it will last for 30 seconds from the time of installation.
-Just deleted modules will be shown in greyscale colours (b/w icon on the left) and with red cross on the right.
+
+__Installed__ modules are shown with color icon (in the left of the row) and a green "play" icon on the right.
+
+__Just added modules__ will have a label "NEW" next to their names and it will last for 30 seconds from the time of installation.
+
+__Just deleted modules__ will be shown in greyscale colours (b/w icon on the left) and with red cross on the right.
+
 Deleted modules will appear in the list for the next minute.
-If you click on "Information" you will see a DEMO of how the information. It has a link to the module's page in the CPAN website and a version number.
+
+If you click on _"Information"_ you will see a DEMO of how the information. It has a link to the module's page in the CPAN website and a version number.
+
 Also: if the module is active its icon in this dialogue will be colour, if delete - greyscale.
 
 ###NB###
