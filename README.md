@@ -59,7 +59,6 @@ __There are below instructions of how to run:__
 3. Open a browser and type: `http://localhost:9191` (please, note: the server is NOT configured for SSL now).
 4. Once you finished working with the app you need to terminate the container. Just type in the terminal (with running container) `CTRL+C`.
 
-
 ----
 
 ###Interface###
@@ -77,6 +76,14 @@ Deleted modules will appear in the list for the next minute.
 If you click on _"Information"_ button next to each module, you will see a DEMO information. It has a link to the module's page in the CPAN website and a version number.
 
 Also: if the module is active its icon in this dialogue will be colour, if delete - greyscale.
+
+As I said the build of the Docker includes cpanminus. It means, that you can easily install and uninstall any modules from the host.
+
+__To install the module__ use your open Terminal (which works with the container with the software now) and type: `$ sudo cpanm Module::Name`. That's it! 
+
+__To uninstall the module__ just type in the Terminal (also where the container with this software is active now) and type: `$ sudo cpanm --uninstall Module::Name`. You will need to confirm the deletion.
+
+__To find just installed/uninstalled__ modules on the screen (in the webpage) just use oldschool `ctrl+f` and type there the name of the module you are looking for.
 
 ###NB###
 As I have never worked with any containers like Docker (or any else) and never saw them in the action, so this is my first try (dockerfile). I spent 2 days for understanding the idea and preparing the dockerfile that I supply in this repository.
