@@ -50,7 +50,7 @@ This one gives me a really easy method for converting my data into JSON format.
 ![picture alt](https://github.com/arseniigorkin/pckgchecker/blob/master/docker.png?raw=true "Dockerfile")
 
 ###The Docker###
-The software is deitributed with the dockerfile. This meand that you can run the software in the container (aka VM but with lower system requirements and size than a usual VMs).
+The software is deitributed with the dockerfile. This meant that you can run the software in the container (aka VM but with lower system requirements and size than a usual VMs).
 
 __There are below instructions of how to run:__
 
