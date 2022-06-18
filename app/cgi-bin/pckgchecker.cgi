@@ -59,7 +59,7 @@ use Cpanel::JSON::XS qw(encode_json);
 		}
 		
 		#storing results into the temp array_ref as a future JS object
-		push $mod_prep, {
+		push @$mod_prep, {
 			module		=> $package,
 			version		=> $version,
 			path		=> $this
